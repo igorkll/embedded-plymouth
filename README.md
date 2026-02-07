@@ -7,6 +7,30 @@
 * "official-plymouth-24.004.60-patched" - a version without keyboard processing based on the official version of "plymouth 24.004.60"
 * "debian-bookworm-plymouth-22.02.122-patched" - a version without keyboard processing based on the plymouth version from debian bookworm "plymouth 22.02.122"
 * "disable_plymouth_escape_handler.patch" - a separate patch that you can apply to your plymouth
+* "release-binary" - ready-made binary releases
+
+## preparing the chroot environment for the build
+```
+# debootstrap
+mkdir -p buildchroot
+debootstrap \
+  --variant=minbase \
+  --arch=amd64 \
+  --include=apt,ca-certificates,wget \
+  bookworm \
+  buildchroot \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+
+# mmdebstrap
+mkdir -p buildchroot
+mmdebstrap \
+  --variant=minbase \
+  --include=apt,ca-certificates,wget \
+  --arch=amd64 \
+  bookworm \
+  buildchroot \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+```
 
 ## Build "official-plymouth-24.004.60-patched"
 1. install dependencies
@@ -36,14 +60,9 @@ meson .. -Dman=true -Ddocbook_xsl=/usr/share/xml/docbook/stylesheet/docbook-xsl/
 ```
 ninja
 ```
-5. install to system directory
+5. install to mount embedded system directory
 ```
 DESTDIR=test/mysystemroot ninja install
-```
-
-## preparing the chroot environment for the build "debian-bookworm-plymouth-22.02.122-patched"
-```
-
 ```
 
 ## Build "debian-bookworm-plymouth-22.02.122-patched"
@@ -69,24 +88,24 @@ autoconf automake libtool autopoint
 export LANG=C.UTF-8
 export LC_ALL=C.UTF-8
 ```
-3. run autoreconf
+4. run autoreconf
 ```
 autoreconf -i
 ```
-3. make build directory
+5. make build directory
 ```
 mkdir build
 cd build
 ```
-4. run meson from build directory
+6. run meson from build directory
 ```
 ../configure --prefix=/usr
 ```
-5. run ninja from build directory
+7. run ninja from build directory
 ```
 make
 ```
-6. install to system directory
+8. install to mount embedded system directory
 ```
 mkdir -p test/mysystemroot
 make DESTDIR="$(pwd)/test/mysystemroot" install
