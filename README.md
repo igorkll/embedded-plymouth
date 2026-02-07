@@ -1,7 +1,11 @@
 ![header image](ply_header.svg "header image")
+This is a patched version of plymouth for use on embedded devices.
+the difference is that it does not respond to pressing the ESC button like the original plymouth and does not show the console...
+that's all... there is no difference anymore...
+It took me about 5 hours of my life because someone was too lazy to add one setting.
 
 ## Patchs
-* this version of Plymouth ignores ESC when booting and DOES NOT SHOW the console.
+* this version of Plymouth ignores ESC when booting and DOES NOT SHOW the console: 
 
 ## Content
 * "official-plymouth-24.004.60-patched" - a version without keyboard processing based on the official version of "plymouth 24.004.60"
