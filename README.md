@@ -169,11 +169,11 @@ autoreconf -i
 mkdir build
 cd build
 ```
-6. run meson from build directory
+6. run configure from build directory
 ```
 ../configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 ```
-7. run ninja from build directory
+7. run make from build directory
 ```
 make
 ```
