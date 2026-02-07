@@ -140,9 +140,9 @@ DESTDIR=test/mysystemroot ninja install
 ## Build "debian-bookworm-plymouth-22.02.122-patched"
 1. mounts bind (if you are building in a chroot)
 ```
-mount -t proc /proc chroot/proc
-mount --bind /dev chroot/dev
-mount --bind /sys chroot/sys
+sudo mount -t proc /proc buildchroot/proc
+sudo mount --bind /dev buildchroot/dev
+sudo mount --bind /sys buildchroot/sys
 ```
 2. install dependencies
 ```
