@@ -3,6 +3,11 @@
 ## Patchs
 * this version of Plymouth ignores ESC when booting and DOES NOT SHOW the console.
 
+## Content
+* "official-plymouth-24.004.60-patched" - a version without keyboard processing based on the official version of "plymouth 24.004.60"
+* "debian-bookworm-plymouth-22.02.122-patched" - a version without keyboard processing based on the plymouth version from debian bookworm "plymouth 22.02.122"
+* "disable_plymouth_escape_handler.patch" - a separate patch that you can apply to your plymouth
+
 ## Build "official-plymouth-24.004.60-patched"
 1. install dependencies
 ```
