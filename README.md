@@ -65,11 +65,12 @@ cd build
 ```
 5. run ninja from build directory
 ```
-ninja
+make
 ```
 6. install to system directory
 ```
-DESTDIR=test/mysystemroot ninja install
+mkdir -p test/mysystemroot
+make DESTDIR="$(pwd)/test/mysystemroot" install
 ```
 
 ## Overview
