@@ -41,6 +41,11 @@ ninja
 DESTDIR=test/mysystemroot ninja install
 ```
 
+## preparing the chroot environment for the build "debian-bookworm-plymouth-22.02.122-patched"
+```
+
+```
+
 ## Build "debian-bookworm-plymouth-22.02.122-patched"
 1. mounts bind (if you are building in a chroot)
 ```
@@ -57,7 +62,16 @@ libpng-dev libjpeg-dev libfreetype6-dev libsystemd-dev git \
 libgl1-mesa-dev libegl1-mesa-dev libwayland-dev \
 libevdev-dev xsltproc libpango1.0-dev libgtk-3-dev gettext \
 libudev-dev docbook-xsl \
-autoconf automake libtool
+autoconf automake libtool autopoint
+```
+3. setup env
+```
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+```
+3. run autoreconf
+```
+autoreconf -i
 ```
 3. make build directory
 ```
