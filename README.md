@@ -37,7 +37,13 @@ DESTDIR=test/mysystemroot ninja install
 ```
 
 ## Build "debian-bookworm-plymouth-22.02.122-patched"
-1. install dependencies
+1. mounts bind (if you are building in a chroot)
+```
+mount -t proc /proc chroot/proc
+mount --bind /dev chroot/dev
+mount --bind /sys chroot/sys
+```
+2. install dependencies
 ```
 # debian/ubuntu:
 sudo apt install build-essential meson ninja-build pkg-config \
@@ -48,20 +54,20 @@ libevdev-dev xsltproc libpango1.0-dev libgtk-3-dev gettext \
 libudev-dev docbook-xsl \
 autoconf automake libtool
 ```
-2. make build directory
+3. make build directory
 ```
 mkdir build
 cd build
 ```
-3. run meson from build directory
+4. run meson from build directory
 ```
 ../configure --prefix=/usr
 ```
-4. run ninja from build directory
+5. run ninja from build directory
 ```
 ninja
 ```
-5. install to system directory
+6. install to system directory
 ```
 DESTDIR=test/mysystemroot ninja install
 ```
