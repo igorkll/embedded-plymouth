@@ -5,7 +5,7 @@ that's all... there is no difference anymore...
 It took me about 5 hours of my life because someone was too lazy to add one setting.
 
 ## Patchs
-* this version of Plymouth ignores ESC when booting and DOES NOT SHOW the console: 
+* this version of Plymouth ignores ESC when booting and DOES NOT SHOW the console: disable_plymouth_escape_handler.patch
 
 ## Content
 * "official-plymouth-24.004.60-patched" - a version without keyboard processing based on the official version of "plymouth 24.004.60"
@@ -103,11 +103,11 @@ cd build
 ```
 6. run meson from build directory
 ```
-../configure --prefix=/usr
+../configure --prefix=/usr --enable-static
 ```
 7. run ninja from build directory
 ```
-make
+make LDFLAGS="-static"
 ```
 8. install to mount embedded system directory
 ```
