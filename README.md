@@ -24,26 +24,75 @@ It took me about 5 hours of my life because someone was too lazy to add one sett
 2. then you need to compile and install embedded-plymouth so that pressing ESC during boot does not open the console anymore. The assembly instructions are below
 
 ## Preparing the chroot environment for the build
+### for x86_64 build (not host architecture)
 ```
-# debootstrap
-mkdir -p buildchroot
+# ----- debootstrap
+mkdir -p buildchroot_x86_64
 debootstrap \
   --variant=minbase \
   --arch=amd64 \
   --include=apt,ca-certificates,wget \
   bookworm \
-  buildchroot \
+  buildchroot_x86_64 \
   http://snapshot.debian.org/archive/debian/20250809T133719Z
 
-# mmdebstrap
-mkdir -p buildchroot
+# ----- mmdebstrap
+mkdir -p buildchroot_x86_64
 mmdebstrap \
   --variant=minbase \
   --include=apt,ca-certificates,wget \
   --arch=amd64 \
   bookworm \
-  buildchroot \
+  buildchroot_x86_64 \
   http://snapshot.debian.org/archive/debian/20250809T133719Z
+```
+### for x86 build (not host architecture)
+```
+# ----- debootstrap
+mkdir -p buildchroot_x86
+debootstrap \
+  --variant=minbase \
+  --arch=i386 \
+  --include=apt,ca-certificates,wget \
+  bookworm \
+  buildchroot_x86 \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+
+# ----- mmdebstrap
+mkdir -p buildchroot_x86
+mmdebstrap \
+  --variant=minbase \
+  --include=apt,ca-certificates,wget \
+  --arch=i386 \
+  bookworm \
+  buildchroot_x86 \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+```
+### for arm64 build (not host architecture)
+```
+# ----- debootstrap
+sudo apt install qemu-user-static
+mkdir -p buildchroot_arm64
+debootstrap \
+  --variant=minbase \
+  --arch=arm64 \
+  --include=apt,ca-certificates,wget \
+  bookworm \
+  buildchroot_arm64 \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+sudo cp -f /usr/bin/qemu-aarch64-static buildchroot_arm64/usr/bin/
+
+# ----- mmdebstrap
+sudo apt install qemu-user-static
+mkdir -p buildchroot_arm64
+mmdebstrap \
+  --variant=minbase \
+  --include=apt,ca-certificates,wget \
+  --arch=arm64 \
+  bookworm \
+  buildchroot_arm64 \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+sudo cp -f /usr/bin/qemu-aarch64-static buildchroot_arm64/usr/bin/
 ```
 
 ## Build "official-plymouth-24.004.60-patched"
