@@ -13,7 +13,11 @@ It took me about 5 hours of my life because someone was too lazy to add one sett
 * "disable_plymouth_escape_handler.patch" - a separate patch that you can apply to your plymouth
 * "release-binary" - ready-made binary releases
 
-## preparing the chroot environment for the build
+## Install
+1. first, in any case, you will probably need to install plymouth from the repository in order for it to download the scripts needed to add plymouth to initramfs
+2. then you need to compile and install embedded-plymouth so that pressing ESC during boot does not open the console anymore. The assembly instructions are below
+
+## Preparing the chroot environment for the build
 ```
 # debootstrap
 mkdir -p buildchroot
@@ -103,11 +107,11 @@ cd build
 ```
 6. run meson from build directory
 ```
-../configure --disable-tests --without-boot-entry --enable-static --disable-shared
+../configure --prefix=/usr
 ```
 7. run ninja from build directory
 ```
-make LDFLAGS="-static"
+make
 ```
 8. install to mount embedded system directory
 ```
