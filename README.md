@@ -4,6 +4,12 @@ the difference is that it does not respond to pressing the ESC button like the o
 that's all... there is no difference anymore...  
 It took me about 5 hours of my life because someone was too lazy to add one setting.  
 
+## you may also be interested in
+* https://github.com/igorkll/linux-embedded-patchs - a set of patches for using the linux kernel on embedded locked-down devices
+* https://github.com/igorkll/syslbuild - creating custom embedded linux systems. the build system
+* https://github.com/igorkll/WinBox-Maker - a program for creating embedded Windows images
+* https://github.com/igorkll/custom-debian-initramfs-init - custom /init script for debian initramfs
+
 ## Patchs
 * this version of Plymouth ignores ESC when booting and DOES NOT SHOW the console: disable_plymouth_escape_handler.patch
 
