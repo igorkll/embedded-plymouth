@@ -48,4 +48,3 @@ m4
 .dirstamp
 /.cache
 /compile_commands.json
-!disable_plymouth_escape_handler.patch

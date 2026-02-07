@@ -107,7 +107,7 @@ cd build
 ```
 6. run meson from build directory
 ```
-../configure --prefix=/usr
+../configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 ```
 7. run ninja from build directory
 ```
