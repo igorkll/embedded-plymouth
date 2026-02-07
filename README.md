@@ -11,7 +11,8 @@ sudo apt install build-essential meson ninja-build pkg-config \
 libdrm-dev libxcb-render0-dev libxcb-shm0-dev libx11-dev libxext-dev \
 libpng-dev libjpeg-dev libfreetype6-dev libsystemd-dev git \
 libgl1-mesa-dev libegl1-mesa-dev libwayland-dev \
-libevdev-dev xsltproc libpango1.0-dev libgtk-3-dev gettext
+libevdev-dev xsltproc libpango1.0-dev libgtk-3-dev gettext \
+libudev-dev docbook-xsl
 ```
 2. make build directory
 ```
@@ -22,6 +23,9 @@ cd build
 ```
 # use Meson cross-file for cross-compilation to a different architecture
 meson .. --prefix=/usr
+
+# local docbook
+meson .. -Dman=true -Ddocbook_xsl=/usr/share/xml/docbook/stylesheet/docbook-xsl/manpages/docbook.xsl --prefix=/usr
 ```
 4. run ninja from build directory
 ```
