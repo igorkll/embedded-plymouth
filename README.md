@@ -28,7 +28,7 @@ It took me about 5 hours of my life because someone was too lazy to add one sett
 ```
 # ----- debootstrap
 mkdir -p buildchroot_x86_64
-debootstrap \
+sudo debootstrap \
   --variant=minbase \
   --arch=amd64 \
   --include=apt,ca-certificates,wget \
@@ -38,10 +38,13 @@ debootstrap \
 
 # ----- mmdebstrap
 mkdir -p buildchroot_x86_64
-mmdebstrap \
+sudo mmdebstrap \
   --variant=minbase \
   --include=apt,ca-certificates,wget \
   --arch=amd64 \
+  --aptopt=Acquire::Check-Valid-Until false \
+  --aptopt=Acquire::AllowInsecureRepositories true \
+  --aptopt=APT::Get::AllowUnauthenticated true \
   bookworm \
   buildchroot_x86_64 \
   http://snapshot.debian.org/archive/debian/20250809T133719Z
@@ -50,7 +53,7 @@ mmdebstrap \
 ```
 # ----- debootstrap
 mkdir -p buildchroot_x86
-debootstrap \
+sudo debootstrap \
   --variant=minbase \
   --arch=i386 \
   --include=apt,ca-certificates,wget \
@@ -60,10 +63,13 @@ debootstrap \
 
 # ----- mmdebstrap
 mkdir -p buildchroot_x86
-mmdebstrap \
+sudo mmdebstrap \
   --variant=minbase \
   --include=apt,ca-certificates,wget \
   --arch=i386 \
+  --aptopt=Acquire::Check-Valid-Until false \
+  --aptopt=Acquire::AllowInsecureRepositories true \
+  --aptopt=APT::Get::AllowUnauthenticated true \
   bookworm \
   buildchroot_x86 \
   http://snapshot.debian.org/archive/debian/20250809T133719Z
@@ -73,7 +79,7 @@ mmdebstrap \
 # ----- debootstrap
 sudo apt install qemu-user-static
 mkdir -p buildchroot_arm64
-debootstrap \
+sudo debootstrap \
   --variant=minbase \
   --arch=arm64 \
   --include=apt,ca-certificates,wget \
@@ -85,10 +91,13 @@ sudo cp -f /usr/bin/qemu-aarch64-static buildchroot_arm64/usr/bin/
 # ----- mmdebstrap
 sudo apt install qemu-user-static
 mkdir -p buildchroot_arm64
-mmdebstrap \
+sudo mmdebstrap \
   --variant=minbase \
   --include=apt,ca-certificates,wget \
   --arch=arm64 \
+  --aptopt=Acquire::Check-Valid-Until false \
+  --aptopt=Acquire::AllowInsecureRepositories true \
+  --aptopt=APT::Get::AllowUnauthenticated true \
   bookworm \
   buildchroot_arm64 \
   http://snapshot.debian.org/archive/debian/20250809T133719Z
