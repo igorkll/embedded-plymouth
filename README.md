@@ -3,6 +3,36 @@
 ## Patchs
 * this version of Plymouth ignores ESC when booting and DOES NOT SHOW the console.
 
+## Build
+1. install dependencies
+```
+# debian/ubuntu:
+sudo apt install build-essential meson ninja-build pkg-config \
+libdrm-dev libxcb-render0-dev libxcb-shm0-dev libx11-dev libxext-dev \
+libpng-dev libjpeg-dev libfreetype6-dev libsystemd-dev git \
+libgl1-mesa-dev libegl1-mesa-dev libwayland-dev \
+libevdev-dev xsltproc
+```
+2. make build directory
+```
+mkdir build
+cd build
+```
+3. run meson from build directory
+```
+# use Meson cross-file for cross-compilation to a different architecture
+meson ..
+```
+4. run ninja from build directory
+```
+ninja
+```
+5. install to system directory
+```
+DESTDIR=test/mysystemroot ninja install
+```
+
+
 ## Overview
 Plymouth is an application that runs very early in the boot process (even before the root filesystem is mounted!) that provides a graphical boot animation while the boot process happens in the background.
 
