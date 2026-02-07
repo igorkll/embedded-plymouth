@@ -21,7 +21,7 @@ cd build
 3. run meson from build directory
 ```
 # use Meson cross-file for cross-compilation to a different architecture
-meson ..
+meson .. --prefix=/usr
 ```
 4. run ninja from build directory
 ```
