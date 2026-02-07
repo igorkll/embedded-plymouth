@@ -1060,22 +1060,24 @@ static void
 on_keyboard_added (state_t        *state,
                    ply_keyboard_t *keyboard)
 {
-        ply_trace ("listening for keystrokes");
-        ply_keyboard_add_input_handler (keyboard,
-                                        (ply_keyboard_input_handler_t)
-                                        on_keyboard_input, state);
-        ply_trace ("listening for escape");
-        ply_keyboard_add_escape_handler (keyboard,
-                                         (ply_keyboard_escape_handler_t)
-                                         on_escape_pressed, state);
-        ply_trace ("listening for backspace");
-        ply_keyboard_add_backspace_handler (keyboard,
-                                            (ply_keyboard_backspace_handler_t)
-                                            on_backspace, state);
-        ply_trace ("listening for enter");
-        ply_keyboard_add_enter_handler (keyboard,
-                                        (ply_keyboard_enter_handler_t)
-                                        on_enter, state);
+        // FUCK THE PLYMOUTH HOTKEYS FOR EMBEDDED DEVICES!!
+        
+        ply_trace ("listening for keystrokes (ignore in embedded-plymouth)");
+        //ply_keyboard_add_input_handler (keyboard,
+        //                                (ply_keyboard_input_handler_t)
+        //                                on_keyboard_input, state);
+        ply_trace ("listening for escape (ignore in embedded-plymouth)");
+        //ply_keyboard_add_escape_handler (keyboard,
+        //                                 (ply_keyboard_escape_handler_t)
+        //                                 on_escape_pressed, state);
+        ply_trace ("listening for backspace (ignore in embedded-plymouth)");
+        //ply_keyboard_add_backspace_handler (keyboard,
+        //                                    (ply_keyboard_backspace_handler_t)
+        //                                    on_backspace, state);
+        ply_trace ("listening for enter (ignore in embedded-plymouth)");
+        //ply_keyboard_add_enter_handler (keyboard,
+        //                                (ply_keyboard_enter_handler_t)
+        //                                on_enter, state);
 
         if (state->boot_splash != NULL) {
                 ply_trace ("keyboard set after splash loaded, so attaching to splash");
@@ -1087,22 +1089,24 @@ static void
 on_keyboard_removed (state_t        *state,
                      ply_keyboard_t *keyboard)
 {
-        ply_trace ("no longer listening for keystrokes");
-        ply_keyboard_remove_input_handler (keyboard,
-                                           (ply_keyboard_input_handler_t)
-                                           on_keyboard_input);
-        ply_trace ("no longer listening for escape");
-        ply_keyboard_remove_escape_handler (keyboard,
-                                            (ply_keyboard_escape_handler_t)
-                                            on_escape_pressed);
-        ply_trace ("no longer listening for backspace");
-        ply_keyboard_remove_backspace_handler (keyboard,
-                                               (ply_keyboard_backspace_handler_t)
-                                               on_backspace);
-        ply_trace ("no longer listening for enter");
-        ply_keyboard_remove_enter_handler (keyboard,
-                                           (ply_keyboard_enter_handler_t)
-                                           on_enter);
+        // FUCK THE PLYMOUTH HOTKEYS FOR EMBEDDED DEVICES!!
+
+        ply_trace ("no longer listening for keystrokes (ignore in embedded-plymouth)");
+        //ply_keyboard_remove_input_handler (keyboard,
+        //                                   (ply_keyboard_input_handler_t)
+        //                                   on_keyboard_input);
+        ply_trace ("no longer listening for escape (ignore in embedded-plymouth)");
+        //ply_keyboard_remove_escape_handler (keyboard,
+        //                                    (ply_keyboard_escape_handler_t)
+        //                                    on_escape_pressed);
+        ply_trace ("no longer listening for backspace (ignore in embedded-plymouth)");
+        //ply_keyboard_remove_backspace_handler (keyboard,
+        //                                       (ply_keyboard_backspace_handler_t)
+        //                                       on_backspace);
+        ply_trace ("no longer listening for enter (ignore in embedded-plymouth)");
+        //ply_keyboard_remove_enter_handler (keyboard,
+        //                                   (ply_keyboard_enter_handler_t)
+        //                                   on_enter);
 
         if (state->boot_splash != NULL)
                 ply_boot_splash_unset_keyboard (state->boot_splash);
