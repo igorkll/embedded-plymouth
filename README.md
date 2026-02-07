@@ -11,7 +11,7 @@ sudo apt install build-essential meson ninja-build pkg-config \
 libdrm-dev libxcb-render0-dev libxcb-shm0-dev libx11-dev libxext-dev \
 libpng-dev libjpeg-dev libfreetype6-dev libsystemd-dev git \
 libgl1-mesa-dev libegl1-mesa-dev libwayland-dev \
-libevdev-dev xsltproc
+libevdev-dev xsltproc libpango1.0-dev libgtk-3-dev gettext
 ```
 2. make build directory
 ```
