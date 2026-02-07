@@ -103,14 +103,7 @@ cd build
 ```
 6. run meson from build directory
 ```
-../configure  --enable-tracing --disable-tests --without-boot-entry \
-    --without-default-plugin                              \
-    --with-background-start-color-stop=0x0073B3           \
-    --with-background-end-color-stop=0x00457E             \
-    --with-background-color=0x3391cd                      \
-    --with-rhgb-compat-link \
-    --sysconfdir=/etc \
-    --localstatedir=/var
+../configure --disable-tests --without-boot-entry --enable-static --disable-shared
 ```
 7. run ninja from build directory
 ```
