@@ -23,6 +23,9 @@ It took me about 5 hours of my life because someone was too lazy to add one sett
 1. first, in any case, you will probably need to install plymouth from the repository in order for it to download the scripts needed to add plymouth to initramfs
 2. then you need to compile and install embedded-plymouth so that pressing ESC during boot does not open the console anymore. The assembly instructions are below
 
+## Recomendations
+* if you have disabled the systemd output to the console via the kernel arguments (systemd.show_status=false) but still see some output, turn off the "plymouth-read-write.service": systemctl mask plymouth-read-write.service
+
 ## Preparing the chroot environment for the build
 ### for x86_64 build (not host architecture)
 ```
