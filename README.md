@@ -45,9 +45,9 @@ sudo mmdebstrap \
   --variant=minbase \
   --include=apt,ca-certificates,wget \
   --arch=amd64 \
-  --aptopt=Acquire::Check-Valid-Until false \
-  --aptopt=Acquire::AllowInsecureRepositories true \
-  --aptopt=APT::Get::AllowUnauthenticated true \
+  --aptopt='Acquire::Check-Valid-Until "false";' \
+  --aptopt='Acquire::AllowInsecureRepositories "true";' \
+  --aptopt='APT::Get::AllowUnauthenticated "true";' \
   bookworm \
   buildchroot_x86_64 \
   http://snapshot.debian.org/archive/debian/20250809T133719Z
@@ -70,9 +70,9 @@ sudo mmdebstrap \
   --variant=minbase \
   --include=apt,ca-certificates,wget \
   --arch=i386 \
-  --aptopt=Acquire::Check-Valid-Until false \
-  --aptopt=Acquire::AllowInsecureRepositories true \
-  --aptopt=APT::Get::AllowUnauthenticated true \
+  --aptopt='Acquire::Check-Valid-Until "false";' \
+  --aptopt='Acquire::AllowInsecureRepositories "true";' \
+  --aptopt='APT::Get::AllowUnauthenticated "true";' \
   bookworm \
   buildchroot_x86 \
   http://snapshot.debian.org/archive/debian/20250809T133719Z
@@ -98,13 +98,71 @@ sudo mmdebstrap \
   --variant=minbase \
   --include=apt,ca-certificates,wget \
   --arch=arm64 \
-  --aptopt=Acquire::Check-Valid-Until false \
-  --aptopt=Acquire::AllowInsecureRepositories true \
-  --aptopt=APT::Get::AllowUnauthenticated true \
+  --aptopt='Acquire::Check-Valid-Until "false";' \
+  --aptopt='Acquire::AllowInsecureRepositories "true";' \
+  --aptopt='APT::Get::AllowUnauthenticated "true";' \
   bookworm \
   buildchroot_arm64 \
   http://snapshot.debian.org/archive/debian/20250809T133719Z
 sudo cp -f /usr/bin/qemu-aarch64-static buildchroot_arm64/usr/bin/
+```
+### for armhf build (not host architecture)
+```
+# ----- debootstrap
+sudo apt install qemu-user-static
+mkdir -p buildchroot_armhf
+sudo debootstrap \
+  --variant=minbase \
+  --arch=armhf \
+  --include=apt,ca-certificates,wget \
+  bookworm \
+  buildchroot_armhf \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+sudo cp -f /usr/bin/qemu-arm-static buildchroot_armhf/usr/bin/
+
+# ----- mmdebstrap
+sudo apt install qemu-user-static
+mkdir -p buildchroot_armhf
+sudo mmdebstrap \
+  --variant=minbase \
+  --include=apt,ca-certificates,wget \
+  --arch=armhf \
+  --aptopt='Acquire::Check-Valid-Until "false";' \
+  --aptopt='Acquire::AllowInsecureRepositories "true";' \
+  --aptopt='APT::Get::AllowUnauthenticated "true";' \
+  bookworm \
+  buildchroot_armhf \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+sudo cp -f /usr/bin/qemu-arm-static buildchroot_armhf/usr/bin/
+```
+### for armel build (not host architecture)
+```
+# ----- debootstrap
+sudo apt install qemu-user-static
+mkdir -p buildchroot_armel
+sudo debootstrap \
+  --variant=minbase \
+  --arch=armel \
+  --include=apt,ca-certificates,wget \
+  bookworm \
+  buildchroot_armel \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+sudo cp -f /usr/bin/qemu-arm-static buildchroot_armel/usr/bin/
+
+# ----- mmdebstrap
+sudo apt install qemu-user-static
+mkdir -p buildchroot_armel
+sudo mmdebstrap \
+  --variant=minbase \
+  --include=apt,ca-certificates,wget \
+  --arch=armel \
+  --aptopt='Acquire::Check-Valid-Until "false";' \
+  --aptopt='Acquire::AllowInsecureRepositories "true";' \
+  --aptopt='APT::Get::AllowUnauthenticated "true";' \
+  bookworm \
+  buildchroot_armel \
+  http://snapshot.debian.org/archive/debian/20250809T133719Z
+sudo cp -f /usr/bin/qemu-arm-static buildchroot_armel/usr/bin/
 ```
 
 ## Build "official-plymouth-24.004.60-patched"
