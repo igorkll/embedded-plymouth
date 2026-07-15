@@ -169,6 +169,7 @@ sudo cp -f /usr/bin/qemu-arm-static buildchroot_armel/usr/bin/
 1. install dependencies
 ```
 # debian/ubuntu:
+sudo apt update
 sudo apt install build-essential meson ninja-build pkg-config \
 libdrm-dev libxcb-render0-dev libxcb-shm0-dev libx11-dev libxext-dev \
 libpng-dev libjpeg-dev libfreetype6-dev libsystemd-dev git \
@@ -208,6 +209,7 @@ sudo mount --bind /sys buildchroot/sys
 2. install dependencies
 ```
 # debian/ubuntu:
+sudo apt update
 sudo apt install build-essential meson ninja-build pkg-config \
 libdrm-dev libxcb-render0-dev libxcb-shm0-dev libx11-dev libxext-dev \
 libpng-dev libjpeg-dev libfreetype6-dev libsystemd-dev git \
