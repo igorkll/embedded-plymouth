@@ -26,6 +26,13 @@ It took me about 5 hours of my life because someone was too lazy to add one sett
 ## Recomendations
 * if you have disabled the systemd output to the console via the kernel arguments (systemd.show_status=false) but still see some output, turn off the "plymouth-read-write.service": systemctl mask plymouth-read-write.service
 
+## Supported architectures
+* x86
+* x86_64
+* arm64
+* armhf
+* armel
+
 ## Preparing the chroot environment for the build
 ### for x86_64 build (not host architecture)
 ```
